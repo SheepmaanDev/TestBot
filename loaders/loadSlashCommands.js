@@ -4,7 +4,6 @@ const { REST } = require('@discordjs/rest')
 
 module.exports = async bot => {
     let commands = []
-
     bot.commands.forEach(async command => {
         let slashcommand = new Discord.SlashCommandBuilder()
         .setName(command.name)
@@ -23,7 +22,6 @@ module.exports = async bot => {
                 )
             }
         }
-
         await commands.push(slashcommand)
     })
     const rest = new REST({ version : '10' }).setToken(bot.token)

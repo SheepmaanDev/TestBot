@@ -21,13 +21,24 @@ module.exports = {
     async run(bot, message, args) {
         try {
             let user = await bot.users.fetch(args._hoistedOptions[0].value)
-            if(!user) return message.reply('Pas de membre à bannir !')
+            if(!user) {return message.reply('Pas de membre à bannir !')}
             let member = message.guild.members.cache.get(user.id)
-            let reason = args.get('raison').value
-            if(!reason) reason = 'Pas de raison fournie.'
-            if(message.user.id === user.id) return message.reply('Essaie pas de te bannir toi même ...')
-            if((await message.guild.fetchOwner()).id === message.user.id) return message.reply('On ne ban pas le grand patron du serveur voyons ...')
-            if(!member?.bannable) return message.reply('Je ne peux pas bannir ce membre !')
+
+            let reason = args.getString('raison')
+            if(!reason) {reason = 'Pas de raison fournie.'}
+
+            if(message.user.id === user.id) {return message.reply('Essaie pas de te bannir toi même ...')}
+            if((await message.guild.fetchOwner()).id === user.id) {return message.reply('On ne ban pas le grand patron du serveur voyons ...')}
+            if(member && !member?.bannable) {return message.reply('Je ne peux pas bannir ce membre !')}
+            if(member && message.member.roles.highest.comparePositionTo(member.roles.highest) <= 0) return message.reply('Tu ne peux pas bannir cette personne !')
+            if((await message.guild.bans.fetch()).get(user.id)) return message.reply('Ce membre est déjà ban !')
+
+            try {await user.send(`Tu as été banni de serveur ${message.guild.name} par ${message.user.tag} pour la raison : ${reason}`)} catch (error) {}
+
+            await message.reply(`${message.user} a banni ${user.tag} pour la raison : ${reason}`)
+
+            await message.guild.bans.create(user.id, {reason : reason})
+
         } catch(err) {
             return message.reply('Pas de membre à bannir !')
         }
