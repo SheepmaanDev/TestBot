@@ -25,8 +25,8 @@ module.exports = {
         }
     ],
     async run(bot, message, args) {
-        let user = args.getUser('membre') || 'Pas de membre à kick !' //Récupére dans le message le membre à mute
-        let member = message.guild.members.cache.get(user.id) || 'Pas de membre à kick !' //Vérifie si le membre à mute existe dans le cache du serveur
+        let user = args.getUser('membre') || 'Pas de membre à mute !' //Récupére dans le message le membre à mute
+        let member = message.guild.members.cache.get(user.id) || 'Pas de membre à mute !' //Vérifie si le membre à mute existe dans le cache du serveur
         let reason = args.getString('raison') || 'Pas de raison fournie.' //Récupére dans le message la raison du mute
         let time = args.getString('temps') || 'Pas de temps fournie.' //Récupére dans le message le temps de mute
 
