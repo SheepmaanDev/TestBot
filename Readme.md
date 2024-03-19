@@ -1,6 +1,6 @@
 # Bot Discord
 ## Installation
-Le bot est écrit en JavaScript, elle sera executée dans un environnement Node. Il est imperatif d'avoir Node et NPM d'installé.
+Le bot est écrit en JavaScript, il sera executé dans un environnement Node. Il est imperatif d'avoir Node et NPM d'installé.
 * Créer un dossier pour le projet
 ```bash
 mkdir /path/to/folder
