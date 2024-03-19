@@ -23,7 +23,7 @@ module.exports = {
             let user = args.getUser('membre') || 'Pas de membre à déban !' //Récupére dans le message le membre à unban
             let member = message.guild.members.cache.get(user.id) || 'Pas de membre à ban !' //Vérifie si le membre à unban existe dans le cache du serveur
             let reason = args.getString('raison') || 'Pas de raison fournie.' //Récupére dans le message la raison du unban
-
+            
             try {await user.send(`Tu as été débanni du serveur : \`${message.guild.name}\` par \`${message.user.tag}\` pour la raison : \`${reason}\``)} catch (error) {} //Envoi d'un MP au membre unban
             await message.reply(`\`${message.user.tag}\` a débanni \`${user.tag}\` pour la raison : \`${reason}\``) //Envoi d'un message sur le serveur
             await message.guild.bans.remove(user.id)
