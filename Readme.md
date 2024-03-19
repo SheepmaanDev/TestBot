@@ -40,4 +40,3 @@ nodemon main.js
 **/ban _@Pseudo Raison_** : Bannir un membre avec une raison. </br>
 **/unban _@Pseudo Raison_** : Débannir un memebre avec une raison. </br>
 **/mute _@Pseudo Temps Raison_** : Mute un membre pour un temps donné avec une raison. </br>
-**/unmute _@Pseudo Raison_** : Démute un membre avec une raison. </br>
