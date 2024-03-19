@@ -3,8 +3,8 @@
 Le bot est écrit en JavaScript, elle sera executée dans un environnement Node. Il est imperatif d'avoir Node et NPM d'installé.
 * Créer un dossier pour le projet
 ```bash
-mkdir /PATH/TO/FOLDER
-cd /PATH/TO/FOLDER
+mkdir /path/to/folder
+cd /path/to/folder
 ```
 * Initialiser le projet
 ```bash
